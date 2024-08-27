@@ -36,6 +36,17 @@ mainCard.addEventListener('mouseleave', function() {
     }
 });
 
+mainCard.addEventListener('click', function() {
+    if (!this.classList.contains('flipped')) {
+        this.classList.add('flipped');
+        progressBarContainer.classList.remove('active');
+        revealAndFlipCards();
+    } else {
+        this.classList.remove('flipped');
+        hideAdditionalCards();
+    }
+});
+
 function revealAndFlipCards() {
     const additionalCards = document.querySelectorAll('#project-card, #blog-card, #media-card');
     additionalCards.forEach((card, index) => {
@@ -43,8 +54,8 @@ function revealAndFlipCards() {
             card.classList.remove('hidden');
             setTimeout(() => {
                 card.classList.add('flipped');
-            }, 100);
-        }, index * 500);
+            }, 800);
+        }, index * 600);
     });
 }
 
@@ -54,20 +65,14 @@ const posts = [
 ];
 
 const postsList = document.getElementById('posts-list');
-const postContent = document.getElementById('post-content');
-
 
 posts.forEach(post => {
     const listItem = document.createElement('li');
     const postLink = document.createElement('a');
     const postDate = document.createElement('span');
 
-    postLink.href = "#";
+    postLink.href = `blog-template.html?file=${encodeURIComponent(post.file)}`;
     postLink.textContent = post.title;
-    postLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        loadMarkdown(post.file);
-    });
 
     postDate.textContent = post.date;
     postDate.classList.add('date');
@@ -77,15 +82,6 @@ posts.forEach(post => {
 
     postsList.appendChild(listItem);
 });
-
-function loadMarkdown(filePath) {
-    fetch(filePath)
-        .then(response => response.text())
-        .then(text => {
-            postContent.innerHTML = marked(text);
-        })
-        .catch(error => console.error('Error loading markdown file:', error));
-}
 
 flipButton.addEventListener('click', () => {
     if (mainCard.classList.contains('flipped')) {

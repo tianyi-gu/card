@@ -19,14 +19,19 @@ body {
     flex-direction: column;
 }
 
-/* Container for all cards */
 .cards-container {
     position: relative;
     width: 100%;
     height: 100%;
 }
 
-/* Main card styling */
+.card-container {
+    perspective: 1000px;
+    transition: transform 0.6s ease-in-out, width 0.6s ease-in-out, height 0.6s ease-in-out;
+    transform-origin: center center;
+    position: absolute;
+}
+
 #main-card {
     position: absolute;
     top: 50%;
@@ -34,13 +39,6 @@ body {
     transform: translate(-50%, -50%);
     width: 450px;
     height: 250px;
-}
-
-/* Other cards styling */
-.card-container {
-    perspective: 1000px;
-    transition: opacity 0.5s ease-in-out;
-    position: absolute;
 }
 
 #project-card {
@@ -52,14 +50,14 @@ body {
 
 #blog-card {
     top: 10%;
-    left: calc(50% + 275px); /* Position the blog card with some margin from the main card */
-    width: calc(40% - 135px); /* Adjust width to leave margin from the right edge */
-    height: calc(80% - 50px); /* Adjust height to add margin from the top and bottom */
+    left: calc(50% + 275px); 
+    width: calc(40% - 135px); 
+    height: calc(80% - 50px);
 }
 
 #blog-card .card-back {
-    background-color: #1c1c1c; /* Dark background color */
-    color: #fff; /* White text color */
+    background-color: #1c1c1c; 
+    color: #fff; 
     padding: 20px;
     overflow-y: auto;
 }
@@ -88,7 +86,7 @@ body {
 }
 
 #blog-card .blog-posts li:last-child {
-    border-bottom: none; /* Remove the border from the last item */
+    border-bottom: none;
 }
 
 #blog-card .blog-posts li a {
@@ -104,33 +102,6 @@ body {
 #blog-card .blog-posts li .date {
     font-size: 16px;
     color: #999;
-}
-
-.post-content {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #2c2c2c;
-    color: #fff;
-    border-radius: 5px;
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-.post-content h1, .post-content h2, .post-content h3 {
-    color: #fff;
-}
-
-.post-content p, .post-content ul, .post-content ol {
-    margin-bottom: 10px;
-}
-
-.post-content a {
-    color: #1e90ff;
-    text-decoration: underline;
-}
-
-.post-content a:hover {
-    color: #ff8c00;
 }
 
 #media-card {
@@ -185,7 +156,6 @@ body {
     transform: rotateY(180deg);
 }
 
-/* Hidden state for cards before they are revealed */
 .hidden {
     opacity: 0;
     visibility: hidden;
@@ -198,7 +168,6 @@ body {
     transform: scale(1);
 }
 
-/* Progress bar styling */
 .progress-bar-container {
     position: fixed;
     bottom: 70px;
@@ -228,7 +197,6 @@ body {
     display: none;
 }
 
-/* Hover message styling */
 .hover-message {
     position: fixed;
     bottom: 67px;
@@ -254,7 +222,7 @@ body {
     width: 30px;
     height: 30px;
     cursor: pointer;
-    z-index: 1000; /* Ensure it stays on top of everything else */
+    z-index: 1000; 
 }
 
 .flip-button img {

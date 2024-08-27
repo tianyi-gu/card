@@ -60,7 +60,7 @@ body {
 }
 
 .card-container:hover .card {
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 20px 1px 30px rgba(0, 0, 0, 0.5);
 }
 
 .card-container.flipped .card {
@@ -70,11 +70,11 @@ body {
 
 .progress-bar-container {
     position: fixed;
-    bottom: 40px;
+    bottom: 70px;
     left: 50%;
     transform: translateX(-50%);
     width: 200px;
-    height: 10px;
+    height: 24px;
     background-color: #ddd;
     overflow: hidden;
     opacity: 0;
@@ -95,4 +95,23 @@ body {
 
 .progress-bar-container.finished {
     display: none;
+}
+
+
+.hover-message {
+    position: fixed;
+    bottom: 67px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 28px;
+    color: #000;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+    font-family: 'New Amsterdam', sans-serif;
+    font-weight: normal;
+}
+
+.hover-message.hidden {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }

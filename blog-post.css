@@ -1,63 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'New Amsterdam', sans-serif;
+    background-color: #1c1c1c;
+    color: #e0e0e0;
 }
 
 .post-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
-    padding: 20px;
-    background-color: #f4f4f4;
+    padding: 50px;
+    background-color: #1c1c1c;
 }
 
 .post-content {
     max-width: 800px;
     width: 100%;
-    background-color: #fff;
-    color: #333;
+    background-color: #1c1c1c;
+    color: #e0e0e0;
     padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+    box-shadow: none;
     overflow-y: auto;
 }
 
-.post-content h1, .post-content h2, .post-content h3 {
-    color: #111;
-    margin-top: 20px;
+.post-content h1 {
+    font-size: 48px;
+    font-weight: bold;
     margin-bottom: 10px;
+    color: #ffffff;
 }
 
-.post-content p, .post-content ul, .post-content ol {
+.post-content h2 {
+    font-size: 32px;
+    margin-top: 40px;
     margin-bottom: 20px;
-    line-height: 1.6;
+    color: #ffffff;
+}
+
+.post-content h3 {
+    font-size: 24px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.post-content p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #d0d0d0;
 }
 
 .post-content a {
-    color: #1e90ff;
-    text-decoration: underline;
+    color: #4a90e2;
+    text-decoration: none;
 }
 
 .post-content a:hover {
     color: #ff8c00;
 }
 
-.post-content ul {
-    list-style-type: disc;
-    margin-left: 20px;
-}
-
-.post-content ol {
-    list-style-type: decimal;
-    margin-left: 20px;
-}
-
 .post-content code {
-    background-color: #f4f4f4;
-    padding: 2px 4px;
+    background-color: #333;
+    padding: 4px 8px;
     border-radius: 4px;
     font-family: 'Courier New', Courier, monospace;
+    color: #ff8c00;
+}
+
+.post-content ul,
+.post-content ol {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+
+.post-content ul li,
+.post-content ol li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.post-content .date,
+.post-content .read-time {
+    font-size: 16px;
+    color: #aaaaaa;
+    margin-bottom: 40px;
+}
+
+.back-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.back-button img {
+    width: 30px;
+    height: 30px;
 }

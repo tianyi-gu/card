@@ -15,25 +15,24 @@
             <!-- Blog content will be inserted here -->
         </div>
     </div>
+    <div class="back-button" id="back-button" style="position: fixed; top: 50px; right: 50px; cursor: pointer; z-index: 1000;">
+        <img src="/media/back.svg" alt="Back Icon" style="width: 30px; height: 30px;">
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/2.0.0/marked.min.js"></script>
     <script>
-        console.log('Testing marked.js:', marked('# Hello World')); // Testing if marked.js is loaded and works
-
-        // Get the URL parameters to find out which file to load
         const params = new URLSearchParams(window.location.search);
         const file = params.get('file');
 
-        console.log('File to load:', file); // Debugging line to check the file parameter
+        console.log('File to load:', file);
 
-        // Function to load and display the markdown content
         function loadMarkdown(filePath) {
             fetch(filePath)
                 .then(response => response.text())
                 .then(text => {
-                    console.log('Raw Markdown Content:', text); // Log the raw markdown content
+                    console.log('Raw Markdown Content:', text); 
 
                     const htmlContent = marked(text);
-                    console.log('Converted HTML:', htmlContent); // Log the converted HTML content
+                    console.log('Converted HTML:', htmlContent);
 
                     const postContent = document.getElementById('post-content');
                     postContent.innerHTML = htmlContent;
@@ -41,12 +40,20 @@
                 .catch(error => console.error('Error loading markdown file:', error));
         }
 
-        // Call the function with the file parameter
         if (file) {
             loadMarkdown(file);
         } else {
             console.error('No file parameter provided in URL.');
         }
+
+        // Back button functionality
+        document.getElementById('back-button').addEventListener('click', () => {
+        if (window.history.length > 1) {
+            window.history.back();
+        } else {
+            window.location.href = 'index.html'; // Fallback URL if there's no history
+        }
+        });
     </script>
 </body>
 </html>

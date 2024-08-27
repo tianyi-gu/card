@@ -48,14 +48,15 @@ mainCard.addEventListener('click', function() {
 });
 
 function revealAndFlipCards() {
-    const additionalCards = document.querySelectorAll('#project-card, #blog-card, #media-card');
+    const additionalCards = document.querySelectorAll('#project-card, #blog-card, #media-card, #socials-card');
     additionalCards.forEach((card, index) => {
+        // console.log(`Flipping card: ${card.id}`);
         setTimeout(() => {
             card.classList.remove('hidden');
             setTimeout(() => {
                 card.classList.add('flipped');
-            }, 800);
-        }, index * 600);
+            }, 100);
+        }, index * 500);
     });
 }
 

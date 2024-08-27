@@ -19,8 +19,8 @@ body {
 
 .card-container {
     perspective: 1000px;
-    width: 400px; /* Adjusted width to better reflect the card's proportions */
-    height: 200px;
+    width: 400px;
+    height: 300px;
 }
 
 .card {
@@ -28,7 +28,8 @@ body {
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.6s ease-in-out;
+    box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.6s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .card-front, .card-back {
@@ -36,52 +37,21 @@ body {
     height: 100%;
     position: absolute;
     backface-visibility: hidden;
-    border: 1px solid #ccc;
-    padding: 20px;
+    border: 1.5px solid #000;
 }
 
 .card-front {
-    background: #fff;
     display: flex;
     align-items: center;
-    font-family: 'Arial', sans-serif;
-    font-size: 16px;
-    color: #000;
-}
-
-.card-front .initials {
-    flex: 0 0 30%; /* Fixed 30% width for initials */
-    font-size: 80px;
-    font-weight: bold;
-    font-family: 'Times New Roman', serif;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.card-front .details {
-    flex: 1; /* Take the remaining space */
-    display: flex;
-    flex-direction: column;
     justify-content: center;
-    padding-left: 20px;
+    background-color: #fff;
+    overflow: hidden;
 }
 
-.card-front .details .name {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.card-front .details .title {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 20px;
-}
-
-.card-front .details .contact-info {
-    font-size: 14px;
-    line-height: 1.5;
+.card-front img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 .card-back {
@@ -90,9 +60,39 @@ body {
 }
 
 .card-container:hover .card {
-    transform: rotateY(180deg) scale(1.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
 }
 
-.card.is-flipped {
-    transform: rotateY(180deg) scale(1.1);
+.card-container.flipped .card {
+    transform: rotateY(180deg);
+    /* box-shadow: none; */
+}
+
+.progress-bar-container {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 10px;
+    background-color: #ddd;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 5px;
+}
+
+.progress-bar {
+    width: 0;
+    height: 100%;
+    background-color: #000;
+    transition: width 1.5s linear;
+}
+
+.progress-bar-container.active {
+    opacity: 1;
+}
+
+.progress-bar-container.finished {
+    display: none;
 }
